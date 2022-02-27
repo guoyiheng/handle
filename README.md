@@ -1,5 +1,26 @@
 ![](./public/og.png)
 
+# forked for what
+
+起因是看到antfu在知乎发了一个想法
+
+![](./why/why_1.png)
+
+出于好奇就点进去看了一眼
+
+![](./why/why_2.png)
+
+`由于网页一天只能玩一次`，所以我就稍微拓展了一下汉兜。
+
+# 新增的内容
+
+增加**伪 · 联机对战功能**
+ 
+点击左上角编辑按扭，生成专门的成语链接，分享给小伙伴玩吧~
+
+功能未经完全的测试，有问题欢迎PR
+
+
 # 汉兜 Handle
 
 A Chinese Hanzi variation of [Wordle](https://www.powerlanguage.co.uk/wordle/). 汉字 Wordle.
