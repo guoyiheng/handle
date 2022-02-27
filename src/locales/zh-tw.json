@@ -68,5 +68,11 @@
   "win-no-hint-count": "無提示獲勝次數",
   "win-rate": "獲勝機率",
   "zhuyin": "注音",
-  "ziyin": "字音"
+  "ziyin": "字音",
+  "fake-tip-start": "* 漢兜代表原遊戲 , ",
+  "fake-tip-end": "代表用戶自定義遊戲",
+  "fake-title": "自定義題目",
+  "fake-share-copied": "鏈接已復製到你的剪貼板，你可以在其他平台粘貼分享",
+  "fake-illegal": "不合法的成語",
+  "fake-illegal-taunt": "文化沙漠，出題都能出歪來"
 }

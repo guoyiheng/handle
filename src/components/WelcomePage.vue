@@ -66,6 +66,9 @@ function variantButton() {
     <div op50>
       {{ t('update-tip') }}
     </div>
+    <div op50>
+      {{ t('fake-tip-start') }} <b text-mis>{{ t('name') }}</b> {{t('fake-tip-end')}}
+    </div>
 
     <Settings />
 

@@ -2,7 +2,8 @@ import type { ParsedChar } from './logic'
 import { START_DATE, TRIES_LIMIT, parseWord as _parseWord, testAnswer as _testAnswer, checkPass, getHint } from './logic'
 import { meta, tries, useZhuyin } from './storage'
 import { getAnswerOfDay } from './answers'
-import { ab2str, decryptIdioms, encryptIdioms, generateKey, str2ab } from './utils/encrypt-decrypt'
+import IDIOMS from './data/idioms.json'
+
 
 export const now = useNow({ interval: 1000 })
 export const isDark = useDark()
@@ -19,33 +20,31 @@ export const showCustomize = ref(false)
 
 const params = new URLSearchParams(window.location.search);
 
-// eslint-disable-next-line no-unexpected-multiline
-// (
-//   async() => {
-//     let encodedData = window.btoa(encodeURIComponent('春风得意')); // 编码
-//     console.log('encodedData',encodedData);
-//     console.log('decodedData',decodeURIComponent(window.atob(encodedData)));
-//   },
-// )()
-
-
-// decode
-const urlIdiom = decodeURIComponent(window.atob(params.get('idiom')!))
 export const isIdiomLegal = (idiom: string) => {
-  return true
+  const result = IDIOMS.find(d => d[0] === idiom)
+  if (result) return true
+  return false
 }
-export const isIdiomOnUrl = computed(() => {
-  return params.get('idiom') && isIdiomLegal
+// decode
+const urlIdiom = computed(() => {
+  try {
+    return decodeURIComponent(window.atob(params.get('idiom')!))
+  } catch (error) {
+    return 'illegal url'
+  }
+})
+export const isLegalIdiomOnUrl = computed(() => {
+  return params.get('idiom') && isIdiomLegal(urlIdiom.value)
 })
 
 export const isDev = params.get('dev') === 'hey'
 export const daySince = useDebounce(computed(() => Math.floor((+now.value - +START_DATE) / 86400000)))
 export const dayNo = computed(() => +(params.get('d') || daySince.value))
 export const answer = computed(() =>
-  isIdiomOnUrl.value ?
+  isLegalIdiomOnUrl.value ?
     {
-      word: urlIdiom!,
-      hint: getHint(urlIdiom!),
+      word: urlIdiom.value!,
+      hint: getHint(urlIdiom.value!),
     } :
     params.get('word')
       ? {

@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { isDark, showCheatSheet, showDashboard, showFailed, showHelp, showHint, showSettings, showVariants, useMask } from '~/state'
+import { isDark, showCheatSheet, showDashboard, showFailed, showHelp, showHint, showSettings, showVariants, useMask, isLegalIdiomOnUrl, showCustomize } from '~/state'
 import { gamesCount } from '~/storage'
 import { t } from '~/i18n'
+import Customize from './Customize.vue';
 
 const toggleDark = useToggle(isDark)
 const toggleSettings = useToggle(showSettings)
 const toggleDashboard = useToggle(showDashboard)
+const toggleCustomize = useToggle(showCustomize)
 
 function openHelp() {
   showHelp.value = true
@@ -16,14 +18,15 @@ function openHelp() {
 <template>
   <nav border="b base" relative>
     <div absolute font-serif text-2xl left-0 right-0 top-0 bottom-0 z--1 tracking-2 flex>
-      <div ma leading-1em>
-        {{ t('name') }}
-      </div>
+      <div ma leading-1em :color="isLegalIdiomOnUrl ? 'mis' : ''">{{ t('name') }}</div>
     </div>
     <div flex="~" items-center justify-between md:max-w-md ma p4>
       <div flex="~ gap-4" items-center>
         <button class="icon-btn" @click="openHelp()">
           <div i-carbon-help />
+        </button>
+        <button class="icon-btn" @click="toggleCustomize()">
+          <div i-carbon-edit />
         </button>
         <button v-if="gamesCount" class="icon-btn" @click="toggleDashboard()">
           <div i-carbon-catalog />
@@ -60,5 +63,8 @@ function openHelp() {
   </Modal>
   <Modal v-model="showCheatSheet" direction="top">
     <CheatSheet />
+  </Modal>
+  <Modal v-model="showCustomize" direction="top">
+    <Customize />
   </Modal>
 </template>
