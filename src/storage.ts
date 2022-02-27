@@ -1,22 +1,30 @@
 import { preferZhuyin } from './i18n'
-import { dayNo } from './state'
+import { dayNo, isLegalIdiomOnUrl, urlIdiom } from './state'
 import type { TriesMeta } from './logic'
 
 export const legacyTries = useStorage<Record<number, string[]>>('handle-tries', {})
 
 export const initialized = useStorage('handle-initialized', false)
-export const history = useStorage<Record<number, TriesMeta>>('handle-tries-meta', {})
+export const history = useStorage<Record<number | string, TriesMeta>>('handle-tries-meta', {})
 export const useZhuyin = useStorage('handle-zhuyin', preferZhuyin)
 export const useNumberTone = useStorage('handle-number-tone', false)
 export const colorblind = useStorage('handle-colorblind', false)
 
 export const meta = computed<TriesMeta>({
   get() {
+    if (isLegalIdiomOnUrl.value) {
+      if (!(urlIdiom.value in history.value))
+        history.value[urlIdiom.value] = {}
+      return history.value[urlIdiom.value]
+    }
     if (!(dayNo.value in history.value))
       history.value[dayNo.value] = {}
     return history.value[dayNo.value]
   },
   set(v) {
+    if (isLegalIdiomOnUrl.value) {
+      history.value[urlIdiom.value] = v
+    }
     history.value[dayNo.value] = v
   },
 })

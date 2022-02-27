@@ -26,7 +26,7 @@ export const isIdiomLegal = (idiom: string) => {
   return false
 }
 // decode
-const urlIdiom = computed(() => {
+export const urlIdiom = computed(() => {
   try {
     return decodeURIComponent(window.atob(params.get('idiom')!))
   } catch (error) {
