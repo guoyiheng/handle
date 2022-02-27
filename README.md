@@ -20,6 +20,10 @@
 
 功能未经完全的测试，有问题欢迎PR
 
+[handle.gyh.cool](https://handle.gyh.cool)
+
+原项目网址 [handle.antfu.me](https://handle.antfu.me)
+
 
 # 汉兜 Handle
 
