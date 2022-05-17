@@ -1,14 +1,14 @@
-![](./public/og.png)
+![](/public/og.png)
 
-# forked for what
+# Forked for what
 
 起因是看到antfu在知乎发了一个想法
 
-![](./public/why_1.png)
+![](/public/why_1.png)
 
 出于好奇就点进去看了一眼
 
-![](./public/why_2.png)
+![](/public/why_2.png)
 
 `由于网页一天只能玩一次`，所以我就稍微拓展了一下汉兜。
 
