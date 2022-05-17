@@ -86,7 +86,7 @@ function variantButton() {
       <span op40> & </span>
       <a op50 hover:op80 href="https://twitter.com/iiiiiiines_____" target="_blank">Inès</a>
     </div>
-    <a href="https://github.com/antfu/handle" target="_blank" flex="~ center gap-1" op50 hover:op80>
+    <a href="https://github.com/guoyiheng/handle" target="_blank" flex="~ center gap-1" op50 hover:op80>
       <div i-carbon-logo-github />
       Source Code
     </a>
